@@ -3,12 +3,14 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const commonConfig = require("./webpack.common");
 const packageJson = require("../package.json");
 
+// Env variable where all aur fe deployed created during CI/CD pipeline
 const domain = process.env.PRODUCTION_DOMAIN;
 
 const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js",
+    // its important as code is deployed to below location
     publicPath: "/container/latest/",
   },
   plugins: [
